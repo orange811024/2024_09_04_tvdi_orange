@@ -42,3 +42,15 @@ file:
 
 ===
 
+content:
+1.屬性-attribute
+2.屬性-property
+3.方法-method() capitalize(),split()
+
+切割空白鍵:
+str.split(sep=None, maxsplit=-1)
+
+split()
+split(sep='xxx')
+split(maxsplit=2)引數名稱的呼叫
+split('xxx')
