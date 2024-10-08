@@ -54,3 +54,13 @@ split()
 split(sep='xxx')
 split(maxsplit=2)引數名稱的呼叫
 split('xxx')
+
+===
+
+chang_list = []
+1.屬性-attribute
+2.屬性-property
+3.方法-method()
+
+insert
+sppend
