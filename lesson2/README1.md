@@ -64,3 +64,18 @@ chang_list = []
 
 insert
 sppend
+
+===
+
+CSV → 表格資料
+JSON → 複雜資料
+
+===
+函式庫(standard library)-module或pack
+function
+常數
+class
+
+csv.reader(file)
+↓
+函式庫
