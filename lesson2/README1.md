@@ -38,7 +38,7 @@ io.TextIOWrapper的實體
 file:
 1.屬性-attribute
 2.屬性-property
-3.方法-method()
+3.方法-method() close(),read()
 
 ===
 
