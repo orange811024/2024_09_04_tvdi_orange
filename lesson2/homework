@@ -1,0 +1,64 @@
+import csv
+
+with open('student.csv', encoding='utf-8')as file:
+  csv_reader = csv.reader(file)
+  for row in csv_reader:
+    print(row)
+
+
+
+import csv
+
+file_path = 'student.csv'
+
+data_list = []
+
+with open(file_path, encoding='utf-8')as file:
+  reader = csv.DictReader(file)
+  for row in reader:
+    data_list.append({
+      'name': row['name'],
+      'age': row['age'],
+      'city': row['city']
+    })
+
+for student in data_list:
+  print(student)
+
+
+
+import csv
+
+file_path = 'student.csv'
+
+data_list = []
+
+with open(file_path, encoding='utf-8')as file:
+  reader = csv.DictReader(file)
+  for row in reader:
+    data_list.append({
+      'name': row['name'],
+      'age': row['age'],
+      'city': row['city']
+    })
+
+filtered_students = []
+for student in data_list:
+    if int(student['age']) > 25:
+        filtered_students.append(student)
+
+for student in filtered_students:
+    print(student)
+
+
+
+import csv
+
+with open('student.csv', encoding='utf-8') as file:
+    reader = csv.DictReader(file)
+    filtered_students = [row for row in reader if int(row['age']) > 25]
+
+with open('filtered_data.csv', mode='w', encoding='utf-8', newline='') as file:
+    file.write('name,age,city\n')
+    for student in filtered_students:
+        file.write(f"{student['name']},{student['age']},{student['city']}\n")
