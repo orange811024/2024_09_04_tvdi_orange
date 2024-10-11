@@ -22,3 +22,5 @@ s2 = tools.get_student(name='Orange',age=28)
 print(s2)
 print(s2.total)
 print(s2.average())
+
+open("le")
