@@ -7,7 +7,7 @@ SAT = 6
 SUN = 7
 
 class person(object):
-    def __init__(self,name:str,age:int):t
+    def __init__(self,name:str,age:int):
         self.__name = name
         self.age = age
 

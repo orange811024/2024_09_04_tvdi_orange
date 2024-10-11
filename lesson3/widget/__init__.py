@@ -9,7 +9,7 @@ SUN = 7
 class person(object):
     def __init__(self,name:str,age:int):
         self.__name = name
-        self.age = age
+        self.__age = age
 
     def __repr__(self) -> str:
         return f'我的名字是:{self.name}\n我的age是:{self.age}'
@@ -21,6 +21,17 @@ class person(object):
     @name.setter
     def name(self,n):
         print(f'不可以改名為{n}')
+
+    @property
+    def age(self)->int:
+        return self.__age
+    
+    @age.setter
+    def age(self,value):
+        if value > 100 or value < 0:
+            print(f'不合法的值')
+        else:
+            self.__age = value
 
 class Student(person):
     @classmethod
