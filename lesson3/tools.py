@@ -7,7 +7,7 @@ SAT = 6
 SUN = 7
 
 class person(object):
-    def __init__(self,name:str,age:int):     #type hint
+    def __init__(self,name:str,age:int):t
         self.__name = name
         self.age = age
 
