@@ -1,2 +1,4 @@
 requests
 ttkthemes
+
+'''pip install -r requirements.txt
