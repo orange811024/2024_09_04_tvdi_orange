@@ -6,14 +6,14 @@ class Window(ThemedTk):
         super().__init__(*args,**kwargs)
         self.title('使用ttk的套件')
         style = ttk.Style(self)
-        topFrame = ttk.Frame(self,width=300,height=100,borderwidth=1,relief='groove')
+        topFrame = ttk.Frame(self,width=300,height=100,borderwidth=3,relief='groove')
         topFrame.pack(pady=(10,0))
-        bottomFrame = ttk.Frame(self,width=500,height=30,borderwidth=1,relief='groove')
+        bottomFrame = ttk.Frame(self,width=500,height=30,borderwidth=3,relief='groove')
         bottomFrame.pack(padx=10,pady=10)
 
 
 def main():
-    window = Window(theme='black')
+    window = Window(theme='arc')
     window.mainloop()
 
 if __name__ == '__main__':
