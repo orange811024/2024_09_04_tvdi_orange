@@ -7,10 +7,15 @@ class Window(ThemedTk):
         self.title('使用ttk的套件')
         style = ttk.Style(self)
         topFrame = ttk.Frame(self,width=300,height=100,borderwidth=3,relief='groove')
-        topFrame.pack(pady=(10,0))
-        bottomFrame = ttk.Frame(self,width=500,height=30,borderwidth=3,relief='groove')
+        topFrame.pack(padx=10,pady=(10,0),expand=True,fill='x')
+        btn1 = ttk.Button(topFrame,text='按鈕1')
+        btn1.pack(side='left')
+        btn2 = ttk.Button(topFrame,text='按鈕2')
+        btn2.pack(side='left')
+        btn3 = ttk.Button(topFrame,text='按鈕3')
+        btn3.pack(side='left')
+        bottomFrame = ttk.Frame(self,width=500,height=300,borderwidth=3,relief='groove')
         bottomFrame.pack(padx=10,pady=10)
-
 
 def main():
     window = Window(theme='arc')
