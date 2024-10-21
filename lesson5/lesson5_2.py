@@ -29,6 +29,16 @@ class Window(ThemedTk):
         self.password = tk.StringVar()
         ttk.Entry(bottomFrame,textvariable=self.password,show='*').grid(column=1,row=1,pady=10,padx=10)
 
+        #=====row2=====
+        radioFrame = ttk.Frame(bottomFrame,height=10).grid(column=0,row=2,columnspan=2)
+        size = (('Small','S'),
+                ('Medium','M'),
+                ('Large','L'),
+                ('Extra Large','XL'),
+                ('Extra Extra Large','XXL'))
+        label = ttk.Label(radioFrame,text="What's your t-shirt size?").pack()
+        #=====end row2=====
+
         cancel_btn = ttk.Button(bottomFrame,text='取消',command=self.cancel_click)
         cancel_btn.grid(column=0,row=2,padx=10,pady=(30,0))
 
@@ -48,8 +58,8 @@ class Window(ThemedTk):
 
 def main():
     window = Window(theme='arc')
-    window.username.set('輸入姓名')
-    window.password.set('輸入密碼')
+    #window.username.set('輸入姓名')
+    #window.password.set('輸入密碼')
     window.mainloop()
 if __name__ == '__main__':
     main()
