@@ -25,12 +25,12 @@ class Window(ThemedTk):
 
         #==============bottomFrame===============
         bottomFrame = ttk.Frame(self)
-        agreement = tk.StringVar(self)
+        self.agreement = tk.StringVar(self)
 
         ttk.Checkbutton(bottomFrame,
                 text='I agree',
                 command=self.agreement_changed,
-                variable=agreement,
+                variable=self.agreement,
                 onvalue='agree',
                 offvalue='disagree').pack()
         
