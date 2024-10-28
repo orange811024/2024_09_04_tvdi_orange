@@ -31,25 +31,24 @@ class Window(ThemedTk):
         # define columns
         columns = ('date', 'county', 'aqi','pm25','status','lat','lon')
 
-        tree = ttk.Treeview(bottomFrame, columns=columns, show='headings')
+        self.tree = ttk.Treeview(bottomFrame, columns=columns, show='headings')
 
         # define headings
-        tree.heading('date', text='日期')
-        tree.heading('county', text='城市')
-        tree.heading('aqi', text='空氣品質')
-        tree.heading('pm25', text='PM2.5')
-        tree.heading('status', text='狀態')
-        tree.heading('lat', text='緯度')
-        tree.heading('lon', text='經度')
+        self.tree.heading('county', text='城市')
+        self.tree.heading('date', text='日期')
+        self.tree.heading('aqi', text='空氣品質')
+        self.tree.heading('pm25', text='PM2.5')
+        self.tree.heading('status', text='狀態')
+        self.tree.heading('lat', text='緯度')
+        self.tree.heading('lon', text='經度')
 
-        tree.column('date',width=120,anchor='center')
-        tree.column('county',width=70,anchor='center')
-        tree.column('aqi',width=70,anchor='center')
-        tree.column('pm25',width=70,anchor='center')
-        tree.column('status',width=70,anchor='center')
-        tree.column('lat',width=100,anchor='center')
-        tree.column('lon',width=100,anchor='center')
-        tree.insert('','end',values=('2024-10-28 09:00','屏東縣',17,6.5,'良好',22.260899,120.651472))
+        self.tree.column('date',width=120,anchor='center')
+        self.tree.column('county',width=70,anchor='center')
+        self.tree.column('aqi',width=70,anchor='center')
+        self.tree.column('pm25',width=70,anchor='center')
+        self.tree.column('status',width=70,anchor='center')
+        self.tree.column('lat',width=100,anchor='center')
+        self.tree.column('lon',width=100,anchor='center')
 
         # generate sample data
         # contacts = []
@@ -60,12 +59,15 @@ class Window(ThemedTk):
         # for contact in contacts:
         #     tree.insert('', tk.END, values=contact)
 
-        tree.pack(side='right')
+        self.tree.pack(side='right')
         bottomFrame.pack(expand=True,fill='x',padx=20,pady=(0,20),ipadx=10,ipady=10)
 
         #==============end bottomFrame===============
     def sitename_selected(self,event):
-        print(self.selected_site.get())
+        selected = self.selected_site.get()
+        selected_data = datasource.get_selected_data(selected)
+        for record in selected_data:
+            self.tree.insert('','end',values=record)
 
 def main():
     window = Window(theme="arc")
