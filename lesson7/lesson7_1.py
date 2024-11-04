@@ -24,13 +24,17 @@ class Window(ThemedTk):
 
         #==============bottomFrame===============
         bottomFrame = ttk.Frame(self)
+            #==============selectedFrame===============
+        selectedFrame = ttk.Frame(self,padding=[10,10,10,10])
         sitenames = datasource.get_sitename()
         self.selected_site = tk.StringVar()
         sitenames_cb = ttk.Combobox(bottomFrame, textvariable=self.selected_site,values=sitenames,state='readonly')
         self.selected_site.set('請選擇站點')
         sitenames_cb.bind('<<ComboboxSelected>>', self.sitename_selected)
-        sitenames_cb.pack(side='left',expand=True,anchor='n')        
-        
+        sitenames_cb.pack(side='left',expand=True,anchor='n')
+        selectedFrame.pack(side='left',expand=True,fill='y',padx=(20,0))
+            #==============EndselectedFrame===============
+
         # define columns
         columns = ('date', 'county', 'aqi', 'pm25','status','lat','lon')
 
