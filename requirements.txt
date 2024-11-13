@@ -1,4 +1,6 @@
 requests
 ttkthemes
+Pillow
+tkintermapview
 
 '''pip install -r requirements.txt

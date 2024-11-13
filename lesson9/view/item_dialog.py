@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter.simpledialog import Dialog
 from PIL import Image, ImageTk
+import tkintermapview as tkmap
 
 class MyCustomDialog(Dialog):
     def __init__(self,parent,record:list,title=None):
@@ -17,6 +18,7 @@ class MyCustomDialog(Dialog):
 
     def body(self, master):
         # 創建對話框主體。返回應具有初始焦點的控件。
+        ttk.Label(master,text=self.date,font=("Helvetica",24,"bold")).pack(pady=20)
         main_frame = ttk.Frame(master,borderwidth=1,relief='groove')
         canvas_left = tk.Canvas(main_frame,width=200,height=200)
         if self.aqi <= 50:
@@ -32,7 +34,9 @@ class MyCustomDialog(Dialog):
         canvas_left.create_text(100, 40, text=f'AQI:{self.status}',font=("Helvetica",24,"bold"),fill='#9E7A7A')
         self.img = Image.open(path)
         self.green = ImageTk.PhotoImage(self.img)
-        canvas_left.create_image(100, 100, anchor='center', image=self.green)      
+        canvas_left.create_image(100, 100, anchor='center', image=self.green)
+        canvas_left.create_text(100, 160, text=f'AQI:{self.aqi}',font=("Helvetica",24,"bold"),fill='#9E7A7A')
+
         canvas_left.pack(side='left')
 
         canvas_right = tk.Canvas(main_frame,width=200,height=200)
@@ -50,9 +54,21 @@ class MyCustomDialog(Dialog):
         self.img1 = Image.open(path)
         self.green1 = ImageTk.PhotoImage(self.img1)
         canvas_right.create_image(100, 100, anchor='center', image=self.green1)      
+        canvas_right.create_text(100, 160, text=f'PM2.5:{self.pm25}',font=("Helvetica",24,"bold"),fill='#9E7A7A')
         canvas_right.pack(side='right')
         main_frame.pack(expand=True,fill='x')
-        
+
+        map_frame = ttk.Frame(master)
+        map_widget = tkmap.TkinterMapView(map_frame,
+                                         width=400,
+                                         height=400,
+                                         corner_radius=0
+                                         )
+        map_widget.set_position(self.lat,self.lon,marker=True) #台北市位置
+        map_widget.set_zoom(15) #設定顯示大小
+        map_widget.pack()
+        map_frame.pack(padx=10,pady=10)
+
     def apply(self):
         # 當用戶按下確定時處理數據
         print("使用者按了apply")
@@ -75,5 +91,3 @@ class MyCustomDialog(Dialog):
     def cancel(self,evnet=None):
         print("使用者按下cancel")
         super().cancel()
-
-        
