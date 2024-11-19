@@ -85,7 +85,7 @@ def get_plot_data(sitename:str)->DataFrame:
         sql = '''
         SELECT date,aqi,pm25
         FROM records
-        WHERE sitename = ?;
+        WHERE sitename = ?; 
         '''
         cursor.execute(sql,(sitename,))
         data_list = []
@@ -97,7 +97,7 @@ def get_plot_data(sitename:str)->DataFrame:
         df = pd.DataFrame(data_list)
         df['date'] = pd.to_datetime(df['date'])
         df1 = df.set_index('date')
-        df1
+        return df1
 
 def download_data():
     print("重新下載資料")
